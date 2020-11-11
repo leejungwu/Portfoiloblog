@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  <script>
+    window.onload = function() {
+        (document.getElementsByTagName( 'th' )[1]).click();
+        $(".load").slice(0, 10).show(); // select the first ten
+        $("#load").click(function(e){ // click event for load more
+            e.preventDefault();
+            $(".load:hidden").slice(0, 10).show(); // select next 10 hidden divs and show them
+        });
+    };
+  </script>
+  <style> .load { display:none; }</style>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">경북IT융합산업기술원</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" href="/about" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+
+    <div class="container mb-3">
+
+      <h2 class="mb-3">최근 게시글</h2>
+
+      <table class="board-table table table-sm border-bottom sortable">
+
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" class="sorttable_nosort">Title</th>
+            <th scope="col" class="date" data-sortable="true">Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if(posts == null || posts.length == 0){ %>
+            <tr>
+              <td colspan=2> There is no data to show </td>
+            </tr>
+          <% } %>
+          <% posts.forEach(function(post) { %>
+            <tr class="load">
+              <td>
+                <a href="/posts/<%= post._id %>"><div class="ellipsis"><%= post.title %></div></a>
+              </td>
+              <td class="date">
+                <span data-date="<%= post.createdAt %>"></span>
+              </td>
+            </tr>
+          <% }) %>
+          <% seconds.forEach(function(second) { %>
+            <tr class="load">
+              <td>
+                <a href="/seconds/<%= second._id %>"><div class="ellipsis"><%= second.title %></div></a>
+              </td>
+              <td class="date">
+                <span data-date="<%= second.createdAt %>"></span>
+              </td>
+            </tr>
+          <% }) %>
+          <% thirds.forEach(function(third) { %>
+            <tr class="load">
+              <td>
+                <a href="/thirds/<%= third._id %>"><div class="ellipsis"><%= third.title %></div></a>
+              </td>
+              <td class="date">
+                <span data-date="<%= third.createdAt %>"></span>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+        <a href="#" id="load">Load More</a>
+    </div>
+  
+    <%- include('../partials/footer') %>
+  </body>
+  
+</html>
