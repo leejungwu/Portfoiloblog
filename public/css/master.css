@@ -50,23 +50,22 @@ body {
 
 /* 부트스트랩 */
 .footer {
-  padding-top: 1.8rem;
-  padding-bottom: 0.9rem;
-  padding-left: 4rem;
+  padding: 45px 0;
   background-color: #3e4044;
   color: #fff;
   bottom: 0px;
   position: relative;
   top: 400px;
   width: 100%;
+  margin:auto;
 }
 
 .footercontainer {
-  min-width: 992px !important;
-  padding-right: 1.5rem;
-  padding-left: 2.9rem;
+  max-width: calc(1100px - (30px * 2));
   margin-right: auto;
-  margin-left: 5rem;
+  margin-left: auto;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 .btn-social {
