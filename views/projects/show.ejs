@@ -12,26 +12,26 @@
         <ol class="breadcrumb p-1 pl-2 pr-2">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
           <li class="breadcrumb-item"><a href="/projects">Board</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><%= post.title %></li>
+          <li class="breadcrumb-item active" aria-current="page"><%= project.title %></li>
         </ol>
       </nav>
 
       
-      <h5 class="card-header p-2"><%= post.title %></h5>
+      <h5 class="card-header p-2"><%= project.title %></h5>
       <div class="row">
 
         <div class="col-md-8 col-lg-9 col-xl-9 order-sm-2 order-md-1">
-          <div class="post-body p-2"><%- post.body %></div>
+          <div class="post-body p-2"><%- project.body %></div>
         </div>
 
         <div class="col-md-4 col-lg-3 col-xl-3 order-sm-1 order-md-2">
           <div class="post-info card m-2 p-2">
             <div class="border-bottom pb-1 mb-1"> <!-- 1 -->
-              <span>Author</span> : <%= post.author ? post.author.username : "" %>
+              <span>Author</span> : <%= project.author ? project.author.username : "" %>
             </div>
-            <div><span>Created</span> : <span data-date-time="<%= post.createdAt %>"><%= post.createdAt %></span></div>
-            <% if(post.updatedAt) { %>
-              <div><span>Updated</span> : <span data-date-time="<%= post.updatedAt %>"><%= post.updatedAt %></span></div>
+            <div><span>Created</span> : <span data-date-time="<%= project.createdAt %>"><%= project.createdAt %></span></div>
+            <% if(project.updatedAt) { %>
+              <div><span>Updated</span> : <span data-date-time="<%= project.updatedAt %>"><%= project.updatedAt %></span></div>
             <% } %>
           </div>
         </div>
@@ -41,9 +41,9 @@
 
       <div class="mt-3">
         <a class="btn btn-primary" href="/projects<%= getPostQueryString() %>">Back</a>
-        <% if(isAuthenticated && post.author && currentUser.id == post.author.id){ %>
-          <a class="btn btn-primary" href="/projects/<%= post._id %>/edit<%= getPostQueryString() %>">Edit</a>
-          <form action="/projects/<%= post._id %>?_method=delete<%= getPostQueryString(true) %>" method="post" class="d-inline">
+        <% if(isAuthenticated && project.author && currentUser.id == project.author.id){ %>
+          <a class="btn btn-primary" href="/projects/<%= project._id %>/edit<%= getPostQueryString() %>">Edit</a>
+          <form action="/projects/<%= project._id %>?_method=delete<%= getPostQueryString(true) %>" method="post" class="d-inline">
             <a class="btn btn-primary" href="javascript:void(0)" onclick="confirm('Do you want to delete this?')?this.parentElement.submit():null;">Delete</a>
           </form>
         <% } %>

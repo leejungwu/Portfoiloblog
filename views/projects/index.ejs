@@ -26,14 +26,14 @@
               <td colspan=2> There is no data to show </td>
             </tr>
           <% } %>
-          <% projects.forEach(function(post) { %>
+          <% projects.forEach(function(project) { %>
             <tr>
               <td>
                 <!-- show route으로 가는 경우 page, limit query string을 전달 --> 
-                <a href="/projects/<%= post._id %><%= getPostQueryString() %>"><div class="ellipsis"><%= post.title %></div></a>
+                <a href="/projects/<%= project._id %><%= getPostQueryString() %>"><div class="ellipsis"><%= project.title %></div></a>
               </td>
               <td class="author">
-                <div class="ellipsis"><%= post.author ? post.author.username : "" %></div>
+                <div class="ellipsis"><%= project.author ? project.author.username : "" %></div>
               </td>
               <td class="date">
                 <span data-date="<%= project.createdAt %>"></span>
