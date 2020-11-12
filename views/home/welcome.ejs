@@ -60,7 +60,7 @@
           <% posts.forEach(function(post) { %>
             <tr class="load">
               <td>
-                <a href="/posts/<%= post._id %>"><div class="ellipsis"><%= post.title %></div></a>
+                <a href="/menu/posts/<%= post._id %>"><div class="ellipsis"><%= post.title %></div></a>
               </td>
               <td class="date">
                 <span data-date="<%= post.createdAt %>"></span>
@@ -70,7 +70,7 @@
           <% seconds.forEach(function(second) { %>
             <tr class="load">
               <td>
-                <a href="/seconds/<%= second._id %>"><div class="ellipsis"><%= second.title %></div></a>
+                <a href="/menu/seconds/<%= second._id %>"><div class="ellipsis"><%= second.title %></div></a>
               </td>
               <td class="date">
                 <span data-date="<%= second.createdAt %>"></span>
@@ -80,7 +80,7 @@
           <% thirds.forEach(function(third) { %>
             <tr class="load">
               <td>
-                <a href="/thirds/<%= third._id %>"><div class="ellipsis"><%= third.title %></div></a>
+                <a href="/menu/thirds/<%= third._id %>"><div class="ellipsis"><%= third.title %></div></a>
               </td>
               <td class="date">
                 <span data-date="<%= third.createdAt %>"></span>
