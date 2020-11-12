@@ -20,7 +20,7 @@ router.get('/', async function(req, res){
     .limit(limit) // 일정한 수만큼만 검색된 결과를 보여주는 함수
     .exec();
 
-  res.render('seconds/index', {
+  res.render('menu/seconds/index', {
     seconds:seconds,
     currentPage:page, // 현재 페이지 번호
     maxPage:maxPage,  // 마지막 페이지번호
@@ -32,7 +32,7 @@ router.get('/', async function(req, res){
 router.get('/new', util.isLoggedin, function(req, res){
   var second = req.flash('second')[0] || {};
   var errors = req.flash('errors')[0] || {};
-  res.render('seconds/new', { second:second, errors:errors });
+  res.render('menu/seconds/new', { second:second, errors:errors });
 });
 
 // create
@@ -42,9 +42,9 @@ router.post('/', util.isLoggedin, function(req, res){
     if(err){
       req.flash('second', req.body);
       req.flash('errors', util.parseError(err));
-      return res.redirect('/seconds/new'+res.locals.getPostQueryString());
+      return res.redirect('/menu/seconds/new'+res.locals.getPostQueryString());
     }
-    res.redirect('/seconds'+res.locals.getPostQueryString(false, {page:1}));
+    res.redirect('/menu/seconds'+res.locals.getPostQueryString(false, {page:1}));
   });
 });
 
@@ -54,7 +54,7 @@ router.get('/:id', function(req, res){
     .populate('author')
     .exec(function(err, second){
       if(err) return res.json(err);
-      res.render('seconds/show', {second:second});
+      res.render('menu/seconds/show', {second:second});
     });
 });
 
@@ -65,12 +65,12 @@ router.get('/:id/edit', util.isLoggedin, checkPermission, function(req, res){
   if(!second){
     Second.findOne({_id:req.params.id}, function(err, second){
         if(err) return res.json(err);
-        res.render('seconds/edit', { second:second, errors:errors });
+        res.render('menu/seconds/edit', { second:second, errors:errors });
       });
   }
   else {
     second._id = req.params.id;
-    res.render('seconds/edit', { second:second, errors:errors });
+    res.render('menu/seconds/edit', { second:second, errors:errors });
   }
 });
 
@@ -81,9 +81,9 @@ router.put('/:id', util.isLoggedin, checkPermission, function(req, res){
     if(err){
       req.flash('second', req.body);
       req.flash('errors', util.parseError(err));
-      return res.redirect('/seconds/'+req.params.id+'/edit'+res.locals.getPostQueryString());
+      return res.redirect('/menu/seconds/'+req.params.id+'/edit'+res.locals.getPostQueryString());
     }
-    res.redirect('/seconds/'+req.params.id+res.locals.getPostQueryString());
+    res.redirect('/menu/seconds/'+req.params.id+res.locals.getPostQueryString());
   });
 });
 
@@ -91,7 +91,7 @@ router.put('/:id', util.isLoggedin, checkPermission, function(req, res){
 router.delete('/:id', util.isLoggedin, checkPermission, function(req, res){
   Second.deleteOne({_id:req.params.id}, function(err){
     if(err) return res.json(err);
-    res.redirect('/seconds'+res.locals.getPostQueryString());
+    res.redirect('/menu/seconds'+res.locals.getPostQueryString());
   });
 });
 

@@ -202,7 +202,8 @@ textarea {
   height: 350px;
 }
 
-.post-body {
+.post-body,
+#showedit {
   height: 100%;
   min-height: 350px;
 }

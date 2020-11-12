@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%- include('../partials/head') %>
+    <%- include('../../partials/head') %>
   </head>
   <script type="text/javascript">
     //<![CDATA[
@@ -9,19 +9,19 @@
       //]]>
       </script>
   <body>
-    <%- include('../partials/nav') %>
+    <%- include('../../partials/nav') %>
 
     <div class="container mb-3">
 
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb p-1 pl-2 pr-2">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item"><a href="/posts">Board</a></li>
+          <li class="breadcrumb-item"><a href="/menu/posts">Board</a></li>
           <li class="breadcrumb-item active" aria-current="page">New Post</li>
         </ol>
       </nav>
 
-      <form action="/posts<%= getPostQueryString() %>" method="post">
+      <form action="/menu/posts<%= getPostQueryString() %>" method="post">
 
         <div class="form-group">
           <label for="title">Title</label>
@@ -46,13 +46,13 @@
         <% } %>
 
         <div>
-          <a class="btn btn-primary" href="/posts<%= getPostQueryString() %>">Back</a>
+          <a class="btn btn-primary" href="/menu/posts<%= getPostQueryString() %>">Back</a>
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 
       </form>
 
     </div>
-    <%- include('../partials/footer') %>
+    <%- include('../../partials/footer') %>
   </body>
 </html>

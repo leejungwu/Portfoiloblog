@@ -90,7 +90,7 @@ router.post('/login',
     }
   },
   passport.authenticate('local-login', { // passport local strategy를 호출해서 authentication(로그인)을 진행
-    successRedirect : '/posts',
+    successRedirect : '/',
     failureRedirect : '/login'
   }
 ));

@@ -20,7 +20,7 @@ router.get('/', async function(req, res){
         .limit(limit) // 일정한 수만큼만 검색된 결과를 보여주는 함수
         .exec();
 
-    res.render('thirds/index', {
+    res.render('menu/thirds/index', {
         thirds:thirds,
         currentPage:page, // 현재 페이지 번호
         maxPage:maxPage,  // 마지막 페이지번호
@@ -32,7 +32,7 @@ router.get('/', async function(req, res){
 router.get('/new', util.isLoggedin, function(req, res){
     var third = req.flash('third')[0] || {};
     var errors = req.flash('errors')[0] || {};
-    res.render('thirds/new', { third:third, errors:errors });
+    res.render('menu/thirds/new', { third:third, errors:errors });
 });
 
 // create
@@ -42,9 +42,9 @@ router.post('/', util.isLoggedin, function(req, res){
         if(err){
             req.flash('third', req.body);
             req.flash('errors', util.parseError(err));
-            return res.redirect('/thirds/new'+res.locals.getPostQueryString());
+            return res.redirect('/menu/thirds/new'+res.locals.getPostQueryString());
         }
-        res.redirect('/thirds'+res.locals.getPostQueryString(false, {page:1}));
+        res.redirect('/menu/thirds'+res.locals.getPostQueryString(false, {page:1}));
     });
 });
 
@@ -54,7 +54,7 @@ router.get('/:id', function(req, res){
         .populate('author')
         .exec(function(err, third){
             if(err) return res.json(err);
-            res.render('thirds/show', {third:third});
+            res.render('menu/thirds/show', {third:third});
         });
 });
 
@@ -65,12 +65,12 @@ router.get('/:id/edit', util.isLoggedin, checkPermission, function(req, res){
     if(!third){
         Third.findOne({_id:req.params.id}, function(err, third){
             if(err) return res.json(err);
-            res.render('thirds/edit', { third:third, errors:errors });
+            res.render('menu/thirds/edit', { third:third, errors:errors });
         });
     }
     else {
         third._id = req.params.id;
-        res.render('thirds/edit', { third:third, errors:errors });
+        res.render('menu/thirds/edit', { third:third, errors:errors });
     }
 });
 
@@ -81,9 +81,9 @@ router.put('/:id', util.isLoggedin, checkPermission, function(req, res){
         if(err){
             req.flash('third', req.body);
             req.flash('errors', util.parseError(err));
-            return res.redirect('/thirds/'+req.params.id+'/edit'+res.locals.getPostQueryString());
+            return res.redirect('/menu/thirds/'+req.params.id+'/edit'+res.locals.getPostQueryString());
         }
-        res.redirect('/thirds/'+req.params.id+res.locals.getPostQueryString());
+        res.redirect('/menu/thirds/'+req.params.id+res.locals.getPostQueryString());
     });
 });
 
@@ -91,7 +91,7 @@ router.put('/:id', util.isLoggedin, checkPermission, function(req, res){
 router.delete('/:id', util.isLoggedin, checkPermission, function(req, res){
     Third.deleteOne({_id:req.params.id}, function(err){
         if(err) return res.json(err);
-        res.redirect('/thirds'+res.locals.getPostQueryString());
+        res.redirect('/menu/thirds'+res.locals.getPostQueryString());
     });
 });
 

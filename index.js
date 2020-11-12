@@ -44,10 +44,10 @@ app.use(function(req,res,next){
 
 // Routes
 app.use('/', require('./routes/home'));
-app.use('/posts', util.getPostQueryString, require('./routes/posts')); //1
+app.use('/menu/posts', util.getPostQueryString, require('./routes/posts')); //1
 app.use('/users', require('./routes/users'));
-app.use('/seconds', util.getPostQueryString, require('./routes/seconds'));
-app.use('/thirds', util.getPostQueryString, require('./routes/thirds'));
+app.use('/menu/seconds', util.getPostQueryString, require('./routes/seconds'));
+app.use('/menu/thirds', util.getPostQueryString, require('./routes/thirds'));
 app.use('/projects', util.getPostQueryString, require('./routes/projects'));
 
 // Port setting

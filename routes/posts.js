@@ -20,7 +20,7 @@ router.get('/', async function(req, res){
     .limit(limit) // 일정한 수만큼만 검색된 결과를 보여주는 함수
     .exec();
 
-  res.render('posts/index', {
+  res.render('menu/posts/index', {
     posts:posts,
     currentPage:page, // 현재 페이지 번호
     maxPage:maxPage,  // 마지막 페이지번호
@@ -32,7 +32,7 @@ router.get('/', async function(req, res){
 router.get('/new', util.isLoggedin, function(req, res){
   var post = req.flash('post')[0] || {};
   var errors = req.flash('errors')[0] || {};
-  res.render('posts/new', { post:post, errors:errors });
+  res.render('menu/posts/new', { post:post, errors:errors });
 });
 
 // create
@@ -42,9 +42,9 @@ router.post('/', util.isLoggedin, function(req, res){
     if(err){
       req.flash('post', req.body);
       req.flash('errors', util.parseError(err));
-      return res.redirect('/posts/new'+res.locals.getPostQueryString());
+      return res.redirect('/menu/posts/new'+res.locals.getPostQueryString());
     }
-    res.redirect('/posts'+res.locals.getPostQueryString(false, {page:1}));
+    res.redirect('/menu/posts'+res.locals.getPostQueryString(false, {page:1}));
   });
 });
 
@@ -54,7 +54,7 @@ router.get('/:id', function(req, res){
     .populate('author')
     .exec(function(err, post){
       if(err) return res.json(err);
-      res.render('posts/show', {post:post});
+      res.render('menu/posts/show', {post:post});
     });
 });
 
@@ -65,12 +65,12 @@ router.get('/:id/edit', util.isLoggedin, checkPermission, function(req, res){
   if(!post){ // 에러가 없다면
     Post.findOne({_id:req.params.id}, function(err, post){
         if(err) return res.json(err);
-        res.render('posts/edit', { post:post, errors:errors });
+        res.render('menu/posts/edit', { post:post, errors:errors });
       });
   }
   else { // 에러가 있다면
     post._id = req.params.id;
-    res.render('posts/edit', { post:post, errors:errors });
+    res.render('menu/posts/edit', { post:post, errors:errors });
   }
 });
 
@@ -81,9 +81,9 @@ router.put('/:id', util.isLoggedin, checkPermission, function(req, res){
     if(err){
       req.flash('post', req.body);
       req.flash('errors', util.parseError(err));
-      return res.redirect('/posts/'+req.params.id+'/edit'+res.locals.getPostQueryString());
+      return res.redirect('/menu/posts/'+req.params.id+'/edit'+res.locals.getPostQueryString());
     }
-    res.redirect('/posts/'+req.params.id+res.locals.getPostQueryString());
+    res.redirect('/menu/posts/'+req.params.id+res.locals.getPostQueryString());
   });
 });
 
@@ -91,7 +91,7 @@ router.put('/:id', util.isLoggedin, checkPermission, function(req, res){
 router.delete('/:id', util.isLoggedin, checkPermission, function(req, res){
   Post.deleteOne({_id:req.params.id}, function(err){
     if(err) return res.json(err);
-    res.redirect('/posts'+res.locals.getPostQueryString());
+    res.redirect('/menu/posts'+res.locals.getPostQueryString());
   });
 });
 
