@@ -4,6 +4,7 @@ var passport = require('../config/passport');
 var Post = require('../models/Post');
 var Second = require('../models/Second');
 var Third = require('../models/Third');
+var Project = require('../models/Project');
 
 
 // Home
@@ -11,13 +12,15 @@ router.get('/', async function(req, res){
   Promise.all([
     Post.find({}),
     Second.find({}),
-    Third.find({})
+    Third.find({}),
+    Project.find({})
   ])
-  .then(([posts,seconds,thirds]) => {
+  .then(([posts,seconds,thirds,projects]) => {
     res.render('home/welcome', {
       posts:posts,
       seconds:seconds, 
       thirds:thirds,
+      projects:projects,
     });
   })
   .catch((err) => {
