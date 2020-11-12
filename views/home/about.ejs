@@ -9,31 +9,113 @@
       h4 {
         text-indent: 20px;
       }
+      table, th, td {
+       border: 1px solid black;
+       border-collapse: collapse;
+     }
+     table {
+       width: 800px;
+     }
+     th, td{
+       padding: 15px;
+     }
+     h5 {
+      color:#bebebe;
+      font-weight:normal;
+     }
     </style>
   </head>
   <body>
     <%- include('../partials/nav') %>
 
     <div class="container mb-3">
-
       <h2 class="mb-3">About</h2>
-
+      <br/><br/>
       <div>
-        <h4>이정우</h4>
+        <h4>이정우 Jungwoo Lee</h4>
+        <br/>
         <ul style="list-style-type:circle">
-          <li>1995.1.11</li>
-          <li>2021년 대구가톨릭대학교 졸업</li>
-          <li>ㅁㄴㅇㄹ</li>
-          <li>aaa
+          <li>1995.1.11 생</li>
+          <li>ljw538@naver.com</li>
+          <li>2020년 11월 블로그 개설
             <ul>
-              <li>bbb</li>
-              <li>ccc</li>
-              <li>ddd</li>
+              <li>Built with NodeJS, Express, Mongoose</li>
+              <li>Powerd by heroku</li>
+            </ul>
+          </li>
+          <li>2020년 오픈소스 깃허브(Github) 활동 시작</li>
+          <li>기술 스택
+            <ul>
+              <li>HTML, CSS</li>
+              <li>Javascript, jQuery</li>
+              <li>Python, Flask</li>
+              <li>React</li>
+              <li>Node.js, Express.js</li>
+              <li>MongoDB, MySQL</li>
+              <li>AWS, Heroku</li>
+              <li>Git, Github</li>
             </ul>
           </li>
         </ul>
-      </div>
-        
+        <br/><br/><br/><br/><br/><hr>
+        <h5>Education</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>출신학교</th>
+              <th>전공</th>
+              <th>기간</th>
+              <th>구분</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>무학고등학교</td>
+              <td></td>
+              <td>2010. 3 ~ 2013. 2</td>
+              <td>졸업</td>
+            </tr>
+            <tr>
+              <td>대구가톨릭대학교</td>
+              <td>컴퓨터공학</td>
+              <td>2017. 3 ~ 2021. 2</td>
+              <td>졸업</td>
+            </tr>
+            <tr>
+              <td>Angelo State University</td>
+              <td>Computer Science</td>
+              <td>2019. 1 ~ 2019. 5</td>
+              <td>Exchange student</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <h5>Experience</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>내용</th>
+              <th>상세</th>
+              <th>기간</th>
+              <th>구분</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>경북IT융합산업기술원</td>
+              <td></td>
+              <td>2020. 8.10 ~ 2020.12. 3</td>
+              <td>교내SW인턴십</td>
+            </tr>
+            <tr>
+              <td>DCU 코딩경진대회</td>
+              <td>최우수상</td>
+              <td>2020.10.15</td>
+              <td></td>
+            <tr>
+          </tbody>
+        </table>
+        </div>
     </div>
     <%- include('../partials/footer') %>
   </body>
