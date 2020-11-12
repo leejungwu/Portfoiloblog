@@ -12,7 +12,18 @@
         });
     };
   </script>
-  <style> .load { display:none; }</style>
+  <style> 
+    .load { display:none; }
+    #load { text-decoration: underline; }
+    .jumbotron {
+      background-color: seashell;
+      background-size: cover;
+    }
+    a {color:rgba(32, 32, 32, 0.733);}
+    .mb-3 {
+      margin-bottom: 0px!important;
+    }
+  </style>
   </head>
   <body>
     <%- include('../partials/nav') %>
@@ -20,15 +31,17 @@
     <div class="jumbotron">
       <div class="container">
         <h1 class="display-3">Jungwoo Blog</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="/about" role="button">Who are you? &raquo;</a></p>
+        <p>I majored in computer engineering from Catholic University of Daegu. 
+          I started to study my major with interest as I attended school since 2017. There are really many careers in my major, and it's being used in many fields. 
+          I chose this major because I thought I would be able to find a job where I can contribute to an information oriented society, and I'm still learning a lot and thinking about my specific career.</p>
+        <p><a class="btn btn-outline-info" href="/about" role="button">About me &raquo;</a></p>
       </div>
     </div>
 
     <div class="container mb-3">
 
       <h2 class="mb-3">Recent Posts</h2>
-
+      <br/>
       <table class="board-table table table-sm border-bottom sortable">
 
         <thead class="thead-light">

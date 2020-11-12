@@ -195,3 +195,5 @@ table.sortable>thead th:hover:not([data-defaultsort=disabled]) {
 table.sortable>thead th div.mozilla {
   position: relative;
 }
+
+a { color: black}
