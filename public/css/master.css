@@ -197,3 +197,12 @@ table.sortable>thead th div.mozilla {
 }
 
 a { color: black}
+
+textarea {
+  height: 350px;
+}
+
+.post-body {
+  height: 100%;
+  min-height: 350px;
+}

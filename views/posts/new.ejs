@@ -33,7 +33,7 @@
         
         <div class="form-group">
           <label for="body">Body</label>
-          <textarea id="body" name="body" rows="5" class="form-control <%= (errors.body)?'is-invalid':'' %>" style="height: 350px;"><%= post.body %></textarea>
+          <textarea id="body" name="body" rows="5" class="form-control <%= (errors.body)?'is-invalid':'' %>"><%= post.body %></textarea>
           <% if(errors.body){ %>
             <span class="invalid-feedback"><%= errors.body.message %></span>
           <% } %>
