@@ -2,6 +2,11 @@
 <html>
   <head>
     <%- include('../partials/head') %>
+    <script>
+      function getContent(){
+          document.getElementById("body").value = document.getElementById("showedit").innerHTML;
+      }
+    </script>
   </head>
   <body>
     <%- include('../partials/nav') %>
@@ -29,7 +34,8 @@
 
         <div class="form-group">
           <label for="body">Body</label>
-          <textarea id="body" name="body" rows="5" class="form-control <%= (errors.body)?'is-invalid':'' %>"><%= third.body %></textarea>
+          <div contenteditable="true" id="showedit" name="body" rows="5" class="form-control <%= (errors.body)?'is-invalid':'' %>"><%- third.body %></div>
+          <textarea id="body" name="body" rows="5" class="form-control <%= (errors.body)?'is-invalid':'' %>" style="display:none"></textarea>
           <% if(errors.body){ %>
             <span class="invalid-feedback"><%= errors.body.message %></span>
           <% } %>
