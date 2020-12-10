@@ -87,6 +87,16 @@
               </td>
             </tr>
           <% }) %>
+          <% projects.forEach(function(project) { %>
+            <tr class="load">
+              <td>
+                <a href="/menu/projects/<%= project._id %>"><div class="ellipsis"><%= project.title %></div></a>
+              </td>
+              <td class="date">
+                <span data-date="<%= project.createdAt %>"></span>
+              </td>
+            </tr>
+          <% }) %>
         </tbody>
       </table>
         <a href="#" id="load">Load More</a>
